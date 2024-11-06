@@ -10,8 +10,30 @@
       <span id="txtOut" style="white-space: nowrap"></span>
     </div>
     <ol>
-      <li>[Write the question here, and copy this for more questions]</li>
-      <p>[Write your answer here, and copy this for more answers]</p>
+      <li>[In part 1, is it possible to solve the problem using a single "for" loop?]</li>
+      <p>[It is indeed possible, as I demonstrated in my own writing of the task. 
+        It only depends on what you place inside to get repeated]</p>
+      <li>[In part 2, can we create what is known as an "infinite" loop within the condition of the "while" loop?
+        Describe what would or would not be necessary to achieve this. Provide a thorough explanation of
+        your answer.]</li>
+      <p>[It is definitely possible to create an infinite loop - 
+        all one has to do is set a condition which the while loop cannot meet. 
+        Using my own answer as an example, the while loop continues to run until 
+        the program manages to guess the correct number. If that number is set above 60, it will continue looping forever as the program only guesses between 1 and 60]</p>
+      <li>[Discuss briefly how quickly or slowly a computer might be able to compute this, considering the
+        number of guesses and the time it takes. How does the program behave while it is guessing? Can
+        the program perform other tasks concurrently?]</li>
+      <p> [Well, since the loop is infinite it will take "forever" to compute - however as we're using 
+        html code it becomes obvious there's a problem when the result refuses to load; the computer knows
+        it's not done and will keep running until the loop is over. This is instantly noticeable due to 
+        how insanely fast the computer tends to finish when the loop is closed] </p>
+      <li>[Explain the relationship between rows and columns in nested "for" loops. Can we, for instance,
+        change the order, considering rows to be innermost or columns to be innermost, or does this not
+        matter?]</li>
+      <p>[At least with how *I* completed the task where we used nested for loops to make a table, I do not
+        believe changing around the order is possible; the system relies on each colum adding it's entry on the row before reaching
+        the end and resetting to the start. The repetition of any printOut command will result in a new row, and solid
+        the row command must be the outer layer.]</p>
     </ol>
     <script type="module" src="./task_3-2.mjs" defer></script>
   </body>
