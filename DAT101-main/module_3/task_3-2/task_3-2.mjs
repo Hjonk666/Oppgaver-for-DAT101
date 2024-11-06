@@ -91,115 +91,39 @@ printOut(newLine);
 printOut("--- Part 6 ----------------------------------------------------------------------------------------------");
 /* Put your code below here!*/
 //Try to simplify maybe? Reduce all grades to values in a 1-100 scale
-const maxGrade = 236
-let student1 = Math.random() * 237;
-let student2 = Math.random() * 237;
-let student3 = Math.random() * 237;
-let student4 = Math.random() * 237;
-let student5 = Math.random() * 237;
+// Her lager vi et array med alle grade grensene
+const maxGrade = 236;
+const gradeBoundaries = [
+  { letter: "A", min: 89 },
+  { letter: "B", min: 77 },
+  { letter: "C", min: 65 },
+  { letter: "D", min: 53 },
+  { letter: "E", min: 41 },
+  { letter: "F", min: 0 }
+];
 
-//this is... not exactly elegant or efficient *at all*, but I'm tired and don't have much time so copy/paste it is!
-let grade = Math.floor(student1 / maxGrade * 100)
-if (grade >= 89){
-    printOut("Student got an A, with " + grade + "%");
-}
-else if (grade >= 77) {
-    printOut("Student got a B, with " + grade + "%");
-}
-else if (grade >= 65) {
-    printOut("Student got a C, with " + grade + "%");
-}
-else if (grade >= 53) {
-    printOut("Student got a D, with " + grade + "%");
-}
-else if (grade >= 41) {
-    printOut("Student got an E, with " + grade + "%")
-}
-else {
-    printOut("Student got an F, failing the course with " + grade + "%")
-}
-let grade2 = Math.floor(student2 / maxGrade * 100)
-if (grade2 >= 89){
-    printOut("Student 2 got an A, with " + grade2 + "%");
-}
-else if (grade2 >= 77) {
-    printOut("Student 2 got a B, with " + grade2 + "%");
-}
-else if (grade2 >= 65) {
-    printOut("Student 2 got a C, with " + grade2 + "%");
-}
-else if (grade2 >= 53) {
-    printOut("Student 2 got a D, with " + grade2 + "%");
-}
-else if (grade2 >= 41) {
-    printOut("Student 2 got an E, with " + grade2 + "%")
-}
-else {
-    printOut("Student 2 got an F, failing the course with " + grade2 + "%")
-}
-let grade3 = Math.floor(student3 / maxGrade * 100)
-if (grade3 >= 89){
-    printOut("Student 3 got an A, with " + grade3 + "%");
-}
-else if (grade3 >= 77) {
-    printOut("Student 3 got a B, with " + grade3 + "%");
-}
-else if (grade3 >= 65) {
-    printOut("Student 3 got a C, with " + grade3 + "%");
-}
-else if (grade3 >= 53) {
-    printOut("Student 3 got a D, with " + grade3 + "%");
-}
-else if (grade3 >= 41) {
-    printOut("Student 3 got an E, with " + grade3 + "%")
-}
-else {
-    printOut("Student 3 got an F, failing the course with " + grade3 + "%")
-}
-let grade4 = Math.floor(student4 / maxGrade * 100)
-if (grade4 >= 89){
-    printOut("Student 4 got an A, with " + grade4 + "%");
-}
-else if (grade4 >= 77) {
-    printOut("Student 4 got a B, with " + grade4 + "%");
-}
-else if (grade4 >= 65) {
-    printOut("Student 4 got a C, with " + grade4 + "%");
-}
-else if (grade4 >= 53) {
-    printOut("Student 4 got a D, with " + grade4 + "%");
-}
-else if (grade4 >= 41) {
-    printOut("Student 4 got an E, with " + grade4 + "%")
-}
-else {
-    printOut("Student got an F, failing the course with " + grade4 + "%")
-}
-let grade5 = Math.floor(student5 / maxGrade * 100)
-if (grade5 >= 89){
-    printOut("Student 5 got an A, with " + grade5 + "%");
-}
-else if (grade5 >= 77) {
-    printOut("Student 5 got a B, with " + grade5 + "%");
-}
-else if (grade5 >= 65) {
-    printOut("Student 5 got a C, with " + grade5 + "%");
-}
-else if (grade5 >= 53) {
-    printOut("Student 5 got a D, with " + grade5 + "%");
-}
-else if (grade5 >= 41) {
-    printOut("Student 5 got an E, with " + grade5 + "%")
-}
-else {
-    printOut("Student 5 got an F, failing the course with " + grade5 + "%")
-}   
-//A: 89% – 100%
-//B 77% – 88%
-//C: 65% – 76%
-//D: 53% – 64%
-//E: 41% – 52%
-//F: 0% – 40%
+// Her generer vi et array med alle studentene (5), og generer en random grade
+//for hver av dem
+let students = Array.from({ length: 5 }, (_, i) => {
+  let grade = Math.floor((Math.random() * 237) / maxGrade * 100);
+  return { student: `Student ${i + 1}`, grade };
+});
+
+// her finner vi karakter bokstaven basert på grade tallet, funksjonen benyttes av loopen nedenfor
+const getGradeLetter = (grade) => {
+  for (let boundary of gradeBoundaries) {
+    if (grade >= boundary.min) {
+      return boundary.letter;
+    }
+  }
+};
+
+// Her looper vi gjennom alle studentene og skriver ut grade samt finner grade bokstaven
+//ved oppslag gjennom funksjonen ovenfor.
+students.forEach(({ student, grade }) => {
+  const gradeLetter = getGradeLetter(grade);
+  printOut(`${student} got a(n) ${gradeLetter}, with ${grade}%`);
+});
 printOut(newLine);
 
 printOut("--- Part 7 ----------------------------------------------------------------------------------------------");
